@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -37,10 +38,18 @@ public class MainActivity extends AppCompatActivity {
         binding.userGuide.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MyFragment myFragment = new MyFragment();
                 FragmentManager manager = getSupportFragmentManager();
-                FragmentTransaction transaction  = manager.beginTransaction().add(R.id.fragment, myFragment, "myfragment");  // .addToBackStack(null);
-                transaction.commit();
+                Fragment myFragment = manager.findFragmentByTag("myfragment");
+
+                if (myFragment != null) {
+                    FragmentTransaction transaction = manager.beginTransaction();
+                    transaction.remove(myFragment);
+                    transaction.commit();
+                } else {
+                    myFragment = new MyFragment();
+                    FragmentTransaction transaction = manager.beginTransaction().add(R.id.fragment, myFragment, "myfragment");
+                    transaction.commit();
+                }
             }
         });
 

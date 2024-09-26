@@ -5,14 +5,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragment"
+    <TextView
+        android:id="@+id/textView"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_width="250dp"
-        android:layout_height="350dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Click on a number to fill in the input and long press on a number to select the modulo"
+        android:textColor="@color/white"
+        android:padding="20dp"
+        android:gravity="center"
         android:background="?colorPrimary" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
